@@ -1,5 +1,7 @@
 package com.example.demo.student;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
@@ -72,6 +74,7 @@ public class Student {
         this.email = email;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     public LocalDate getDob() {
         return dob;
     }

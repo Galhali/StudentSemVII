@@ -75,4 +75,20 @@ public class StudentService {
             student.setEmail(email);
         }
     }
+
+    @Transactional
+    public void updateStudent(Long studentId, Student student) {
+        Student dbStudent = studentRepository.findById(studentId)
+                .orElseThrow(() -> new IllegalStateException(
+                        + studentId + " does not exists"));
+
+        dbStudent.setName(student.getName());
+        dbStudent.setEmail(student.getEmail());
+        dbStudent.setDob(student.getDob());
+    }
+
+    public Student getStudentById(Long studentId) {
+        Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException("Student with id " + studentId + " does not exists"));
+        return  student;
+    }
 }
